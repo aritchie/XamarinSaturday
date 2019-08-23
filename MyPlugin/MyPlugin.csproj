@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MyPlugin.Abstractions\MyPlugin.Abstractions.csproj" />
+  </ItemGroup>
+
+  <Import Project="..\MyPlugin.Shared\MyPlugin.Shared.projitems" Label="Shared" />
+
+</Project>

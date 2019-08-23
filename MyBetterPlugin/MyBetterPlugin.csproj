@@ -1,0 +1,66 @@
+﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.41">
+
+    <PropertyGroup>
+        <TargetFrameworks>netstandard2.0;xamarin.ios10;monoandroid81;monoandroid90;uap10.0.16299</TargetFrameworks>
+        <Product>$(AssemblyName) ($(TargetFramework))</Product>
+
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://shinylib.net</PackageProjectUrl>
+        <PackageIconUrl>https://raw.githubusercontent.com/shinyorg/shiny/master/art/nuget.png</PackageIconUrl>
+        <PackageReleaseNotes>https://shinylib.net/blog/</PackageReleaseNotes>
+
+        <RepositoryUrl>https://github.com/aritchie/xamarinsaturday</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+
+        <!-- disable sourcelink on mono, to workaround https://github.com/dotnet/sourcelink/issues/155 -->
+        <EnableSourceLink Condition=" '$(Configuration)' == 'Release' AND '$(OS)' == 'Windows_NT' AND '$(MSBuildRuntimeType)' == 'Core' ">true</EnableSourceLink>
+        <EnableSourceControlManagerQueries>$(EnableSourceLink)</EnableSourceControlManagerQueries>
+        <IncludeSymbols>True</IncludeSymbols>
+        <IncludeSource>True</IncludeSource>
+        <PublishRepositoryUrl>True</PublishRepositoryUrl>
+        <EmbedUntrackedSources>True</EmbedUntrackedSources>
+        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+        <DebugType>full</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+        <DebugType Condition=" !$(TargetFramework.StartsWith('monoandroid')) ">portable</DebugType>
+        <DebugType Condition=" $(TargetFramework.StartsWith('monoandroid')) ">Full</DebugType>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    </PropertyGroup>
+
+    <ItemGroup Condition=" '$(SourceLinkEnabled)' == 'true' ">
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta2-19367-01" PrivateAssets="All" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Remove="**\Platforms\**\*.cs" />
+        <None Include="**\Platforms\**\*.cs" />
+    </ItemGroup>
+
+    <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
+        <Compile Include="**\Platforms\Shared\**\*.cs" />
+    </ItemGroup>
+
+    <ItemGroup Condition=" $(TargetFramework.StartsWith('monoandroid')) ">
+        <Compile Include="Platforms\Android\**\*.cs" />
+        <Compile Include="Platforms\Shared\**\*.cs" />
+        <PackageReference Include="Xamarin.Android.Support.v4" Version="28.0.0.1" />
+        <PackageReference Include="Xamarin.Build.Download" Version="0.4.11" PrivateAssets="All" />
+    </ItemGroup>
+
+    <ItemGroup Condition=" $(TargetFramework.StartsWith('uap')) ">
+        <Compile Include="Platforms\Uwp\**\*.cs" />
+        <Compile Include="Platforms\Shared\**\*.cs" />
+    </ItemGroup>
+
+    <ItemGroup Condition=" $(TargetFramework.StartsWith('xamarin.ios')) ">
+        <Compile Include="Platforms\iOS\**\*.cs" />
+        <Compile Include="Platforms\Shared\**\*.cs" />
+    </ItemGroup>
+</Project>
