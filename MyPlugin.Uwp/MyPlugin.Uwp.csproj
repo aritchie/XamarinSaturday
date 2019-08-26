@@ -122,7 +122,6 @@
   <ItemGroup>
     <Compile Include="EnvironmentImpl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Properties\MyPlugin.rd.xml" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
@@ -134,6 +133,9 @@
       <Project>{26c79507-71b5-4beb-8935-a34f969ae2b9}</Project>
       <Name>MyPlugin.Abstractions</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Properties\MyPlugin.Uwp.rd.xml" />
   </ItemGroup>
   <Import Project="..\MyPlugin.Shared\MyPlugin.Shared.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

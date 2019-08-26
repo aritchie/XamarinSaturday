@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("MultiLibrary.Droid.Resource", IsApplication=true)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("MyPlugin.Resource", IsApplication=false)]
 
-namespace MultiLibrary.Droid
+namespace MyPlugin
 {
 	
 	
@@ -22,10 +22,6 @@ namespace MultiLibrary.Droid
 		static Resource()
 		{
 			global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-		}
-		
-		public static void UpdateIdValues()
-		{
 		}
 		
 		public partial class Attribute

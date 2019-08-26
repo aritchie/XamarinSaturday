@@ -25,7 +25,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPlugin.iOS", "MyPlugin.iO
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPlugin.Droid", "MyPlugin.Droid\MyPlugin.Droid.csproj", "{5473D42C-0BA9-4E39-873E-7B131E69911F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBetterPlugin", "MyBetterPlugin\MyBetterPlugin.csproj", "{C22A9EFA-EB3B-45D8-843D-9347FF6445C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBetterPlugin", "MyBetterPlugin\MyBetterPlugin.csproj", "{C22A9EFA-EB3B-45D8-843D-9347FF6445C5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C0887158-0493-4C84-8E0C-86670350D95A}"
+	ProjectSection(SolutionItems) = preProject
+		readme.md = readme.md
+		Xamarin Saturday.pptx = Xamarin Saturday.pptx
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution

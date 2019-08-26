@@ -1,7 +1,7 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.41">
 
     <PropertyGroup>
-        <TargetFrameworks>netstandard2.0;xamarin.ios10;monoandroid81;monoandroid90;uap10.0.16299</TargetFrameworks>
+        <TargetFrameworks>netstandard2.0;xamarin.ios10;monoandroid81;monoandroid90;xamarin.watchos10;uap10.0.16299</TargetFrameworks>
         <Product>$(AssemblyName) ($(TargetFramework))</Product>
 
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -60,7 +60,14 @@
     </ItemGroup>
 
     <ItemGroup Condition=" $(TargetFramework.StartsWith('xamarin.ios')) ">
-        <Compile Include="Platforms\iOS\**\*.cs" />
+        <!--<DefineConstants>$(DefineConstants);IOS</DefineConstants>-->
+        <Compile Include="Platforms\*iOS*\**\*.cs" />
         <Compile Include="Platforms\Shared\**\*.cs" />
     </ItemGroup>
+
+    <ItemGroup Condition=" $(TargetFramework.StartsWith('xamarin.watchos')) ">
+        <Compile Include="Platforms\*watchOS*\**\*.cs" />
+        <Compile Include="Platforms\Shared\**\*.cs" />
+    </ItemGroup>
+
 </Project>
